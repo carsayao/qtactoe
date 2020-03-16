@@ -146,13 +146,13 @@ class Qmatrix:
         if game_status == 1:    # X wins
             call(['espeak "x wins, reward 1" 2>/dev/null'], shell=True)
             reward = 1
-        if game_status == -1:   # O wins
+        elif game_status == -1:   # O wins
             call(['espeak "o wins, reward 0" 2>/dev/null'], shell=True)
             reward = 0
-        if game_status == 2:    # Draw
+        elif game_status == 2:    # Draw
             call(['espeak "draw, reward .5" 2>/dev/null'], shell=True)
             reward = .5
-        else:
+        else:   ## Game not over Game not over
             reward = 0
         print(f"reward {reward}")
         qcurr = 0 if self.qmatrix.get(curr_state) is None \
@@ -208,7 +208,7 @@ class Qmatrix:
                 # Place the X
                 print("X Turn")
                 # Hold s
-                curr_state = self.encode(self.game_state.copy(), player=1)
+                curr_state = self.encode(self.game_state.copy())
                 agent_states.append(curr_state)
                 # Hold sₜ₋₁
                 next_action = self.choose_action(1)
