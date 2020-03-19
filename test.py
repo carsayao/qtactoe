@@ -1,5 +1,6 @@
 import os
 import sys
+import pickle
 # sys.path.append('../')
 from tic import Qmatrix
 
@@ -9,38 +10,27 @@ try:
 except IndexError:
     print(f"You need an arg")
 
-ada = 1
-gamma = .9
+# with open('policy_x', 'rb') as f:
+    # qmatrix = pickle.load(f)
+import pdb; pdb.set_trace()
+
+
+lr = 1
+discount = .9
 m = 5
 e = 0.1
-delta = -0.5
+# ~ 89 epochs
+# delta = 0.0005
+delta = 1
 agent = 1
+sys.exit()
 
 print("** init **")
-game = Qmatrix(3, 3, ada, gamma, m, e, delta, agent)
-# game.show()
-# end = game.check_end()
-# print("end", end)
-# print("rand", game.choose_action())
-# end = 2
-
+# cols, rows, lr, discount, epochs, epsilon, delta, agent):
+game = Qmatrix(3, 3, lr, discount, m, e, delta, agent)
 game.train()
 
-# while end == 0:
-#     game.randomly_place(1)
-#     print("end1", end)
-#     game.show()
-#     end = game.check_end()
-
-#     print("end2", end)
-#     if end == 0:
-#         game.randomly_place(-1)
-#     game.show()
-#     end = game.check_end()
-#     print("end3", end)
-
-# game.show()
-# game.check_end()
-# game.randomly_place(1)
+if arg == 'reward':
+    game.reward()
 
 sys.exit()

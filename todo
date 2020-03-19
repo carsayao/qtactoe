@@ -1,3 +1,17 @@
 enumerate all game states with next_action
     choose max val
 
+backprop
+
+check that it is really choosing
+
+392
+
+0 if no winner
+1 if X wins
+-1 if O wins
+2 if draw
+
+
+
+turn stat arrays into np arr
